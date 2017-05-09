@@ -37,6 +37,8 @@ Tip: Set your workspace just like Framer.
 #### ToDo: Add more examples
 
 - **[Console Log](#console-log)**
+- **[Set Device](#set-device)**
+- **[Set Custom Device](#set-custom-device)**
 - **[Scroll Component](#scroll-component)**
 - **[Page Component](#page-component)**
 - **[Flow Component](#flow-component)**
@@ -53,62 +55,82 @@ print "Check, please"
 console.log("Check, please");
 ```
 
+## Set Device
+
+```javascript
+let Device = new DeviceComponent();
+Device.deviceType = "apple-iphone-7-gold";
+```
+
+## Set Custom Device
+
+```javascript
+let Device = new DeviceComponent();
+// Tablet
+Device.customize({
+	screenWidth: 720,
+	screenHeight: 1024,
+	deviceImage: "http://f.cl.ly/items/001L0v3c1f120t0p2z24/custom.png",
+	deviceImageWidth: 800,
+	deviceImageHeight: 1214
+});
+```
+
 ## Scroll Component
-> Framer Library (JS)
 ```javascript
 // Scroll Component Example
-Framer.Extras.Hints.disable()
+let Device = new DeviceComponent();
 
-app = new Layer({
+let app = new Layer({
 	name: "App",
 	width: 750, height: 1334,
-	scale: 0.5
-})
-app.center()
+	parent: Device.content
+});
+app.center();
 
-myScroll = new ScrollComponent({
+let myScroll = new ScrollComponent({
 	width: 750, height: 1334,
 	parent: app,
 	scrollHorizontal: false
-})
+});
 
-placeholderContent = new Layer({
-	width: 750,
-	height: 2500,
+let placeholderContent = new Layer({
+	width: 750, height: 2500,
 	backgroundColor: "skyblue",
 	parent: myScroll.content
-})
+});
 
 myScroll.on(Events.Move, function(){
 	console.log("Scroll: " + myScroll.scrollY)
-})
+});
 ```
 [Back to top](#notes-and-snippets)
 
 ## Page Component
-> Framer Library (JS)
 ```javascript
-// Page Component
-var pageCount = 8;
-var gutter = 60;
+// Page Component Example
+let Device = new DeviceComponent();
 
-app = new Layer({
+let pageCount = 8;
+let gutter = 20;
+
+let app = new Layer({
 	name: "App",
 	width: 750, height: 1334,
-	scale: 0.5,
-	backgroundColor: null
+	backgroundColor: null,
+	parent: Device.content
 })
 app.center()
 
-myPageComponent = new PageComponent({
+let myPageComponent = new PageComponent({
 	width: 750, height: 1334,
 	parent: app,
 	scrollVertical: false,
 	clip: false
 })
 
-for (var i = 0; i < pageCount; i++) {
-	page = new Layer({
+for (let i = 0; i < pageCount; i++) {
+	let page = new Layer({
 		name: "Page " + i,
 		size: myPageComponent.size,
 		x: (myPageComponent.width + gutter) * i,
@@ -125,26 +147,27 @@ for (var i = 0; i < pageCount; i++) {
 [Back to top](#notes-and-snippets)
 
 ## Flow Component
-> Framer Library (JS)
 ```javascript
 // Flow Component Example
 Framer.Extras.Hints.disable()
 
-app = new Layer({
+let Device = new DeviceComponent();
+
+let app = new Layer({
 	name: "App",
 	width: 750, height: 1334,
-	scale: 0.5,
-	backgroundColor: null
+	backgroundColor: null,
+	parent: Device.content
 })
 app.center()
 
-screenA = new Layer({
+let screenA = new Layer({
 	size: app.size,
 	backgroundColor: "#00AAFF",
 	parent: app
 });
 
-screenB = new Layer({
+let screenB = new Layer({
 	size: app.size,
 	backgroundColor: "#FFCC33",
 	image: Utils.randomImage(),
@@ -166,7 +189,7 @@ screenA.states.animationOptions = {
 }
 
 // Flow
-flow = new FlowComponent({
+let flow = new FlowComponent({
 	size: app.size,
 	parent: app
 })
