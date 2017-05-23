@@ -13,8 +13,8 @@ Quick clarification:
 
 ## Set up the Framer Library
 
-### [~~~ Download ~~~](https://builds.framerjs.com/latest/Framer.zip)
-^ That's the always-up-to-date & stable build, directly from the official 'builds' subdomain.
+## [Download](https://builds.framerjs.com/latest/Framer.zip)
+^ Stable build, directly from the official 'builds' subdomain.
 
 1. Unzip the file and you'll get this folder:
 ```
