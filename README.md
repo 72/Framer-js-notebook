@@ -59,6 +59,7 @@ console.log("Check, please");
 
 ```javascript
 let Device = new DeviceComponent();
+Device.setupContext();
 Device.deviceType = "apple-iphone-7-gold";
 ```
 
@@ -66,6 +67,7 @@ Device.deviceType = "apple-iphone-7-gold";
 
 ```javascript
 let Device = new DeviceComponent();
+Device.setupContext();
 // Tablet
 Device.customize({
 	screenWidth: 720,
@@ -80,17 +82,10 @@ Device.customize({
 ```javascript
 // Scroll Component Example
 let Device = new DeviceComponent();
-
-let app = new Layer({
-	name: "App",
-	width: 750, height: 1334,
-	parent: Device.content
-});
-app.center();
+Device.setupContext();
 
 let myScroll = new ScrollComponent({
 	width: 750, height: 1334,
-	parent: app,
 	scrollHorizontal: false
 });
 
@@ -110,21 +105,13 @@ myScroll.on(Events.Move, function(){
 ```javascript
 // Page Component Example
 let Device = new DeviceComponent();
+Device.setupContext();
 
 let pageCount = 8;
 let gutter = 20;
 
-let app = new Layer({
-	name: "App",
-	width: 750, height: 1334,
-	backgroundColor: null,
-	parent: Device.content
-})
-app.center()
-
 let myPageComponent = new PageComponent({
 	width: 750, height: 1334,
-	parent: app,
 	scrollVertical: false,
 	clip: false
 })
@@ -152,26 +139,17 @@ for (let i = 0; i < pageCount; i++) {
 Framer.Extras.Hints.disable()
 
 let Device = new DeviceComponent();
-
-let app = new Layer({
-	name: "App",
-	width: 750, height: 1334,
-	backgroundColor: null,
-	parent: Device.content
-})
-app.center()
+Device.setupContext();
 
 let screenA = new Layer({
-	size: app.size,
-	backgroundColor: "#00AAFF",
-	parent: app
+	size: Screen.size,
+	backgroundColor: "#00AAFF"
 });
 
 let screenB = new Layer({
-	size: app.size,
+	size: Screen.size,
 	backgroundColor: "#FFCC33",
-	image: Utils.randomImage(),
-	parent: app
+	image: Utils.randomImage()
 });
 
 // States
@@ -190,8 +168,7 @@ screenA.states.animationOptions = {
 
 // Flow
 let flow = new FlowComponent({
-	size: app.size,
-	parent: app
+	size: Screen.size
 })
 
 flow.showNext(screenA);
