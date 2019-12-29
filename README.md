@@ -2,9 +2,15 @@
 
 My self learning notes on using Framer with plain JS instead of CoffeeScript.
 
-Quick clarification:
+Context:
 - **Framer** is the MacOS-exclusive software that you've surely heard about.
 - The **Framer Library** is the engine running behind the scenes. It's an open source project and that's what these notes are about.
+
+2020 clarification update:
+- The "Framer" this repo refers to has long been abandoned by its creators in favor of Framer X, the next evolution of the tool based on React.
+- This repo now contains the old "Framer Classic" library for preservation purposes, in case it's deleted from the official source.
+
+
 
 ## Who is this for?
 - Anyone who feels comfortable with Framer and curious to try it with plain JS flavor.
@@ -32,9 +38,7 @@ Tip: Set your workspace just like Framer.
 
 ![](workspace.jpg)
 
-# Notes and snippets
-
-#### ToDo: Add more examples
+# Index - Notes and snippets
 
 - **[Console Log](#console-log)**
 - **[Set Device](#set-device)**
@@ -42,6 +46,7 @@ Tip: Set your workspace just like Framer.
 - **[Scroll Component](#scroll-component)**
 - **[Page Component](#page-component)**
 - **[Flow Component](#flow-component)**
+- **[Gotchas](#gotchas)**
 
 
 ## Console Log
@@ -188,6 +193,17 @@ screenB.onClick(function() {
 ```
 [Back to top](#notes-and-snippets)
 
+## Gotchas
+
+> Getting a layer's background color
+```javascript
+// In the old times, this line would return the value you expect
+print(layerA.backgroundColor)
+
+// This is how you'd access the color value now
+console.log(layerA.backgroundColor.color)
+```
+[Back to top](#notes-and-snippets)
 
 ---
 
