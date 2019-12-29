@@ -38,7 +38,7 @@ Tip: Set your workspace just like Framer.
 
 ![](workspace.jpg)
 
-# Index - Notes and snippets
+# Notes and snippets
 
 - **[Console Log](#console-log)**
 - **[Set Device](#set-device)**
